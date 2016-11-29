@@ -10,22 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.R.attr.onClick;
 
-/**
- * Created by Vinit Soni on 2016-11-27.
- */
 
-public class MemoryFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class MemoryFragment extends android.support.v4.app.Fragment {
 
     protected Activity mActivity;
     private TextView textPlaceHolder;
-
-    @Override
-    public void onClick(View v) {
-        // the action for the button
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -36,6 +29,7 @@ public class MemoryFragment extends android.support.v4.app.Fragment implements V
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -49,9 +43,19 @@ public class MemoryFragment extends android.support.v4.app.Fragment implements V
 
         View view = inflater.inflate(R.layout.memory_fragment_layout, container, false);
         textPlaceHolder = (TextView) view.findViewById(R.id.text_view_placeholder);
+        textPlaceHolder.setText("This is working");
+        Toast.makeText(getContext(),"MemoryFragment Created", Toast.LENGTH_SHORT).show();
 
         return view;
     }
 
+    public static MemoryFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        MemoryFragment fragment = new MemoryFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 }
