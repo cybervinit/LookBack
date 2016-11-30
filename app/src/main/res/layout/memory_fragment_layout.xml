@@ -9,7 +9,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="placeholder text right now"
-        android:id="@+id/text_view_placeholder"/>
+        android:id="@+id/text_view_placeholder"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

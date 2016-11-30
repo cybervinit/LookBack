@@ -8,13 +8,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import static android.R.attr.onClick;
-
-
+/**
+ * MemoryFragment: This is the fragment that represents the list of memories created. This is where
+ *                  vlogs are saved. vlogs are memories.
+ */
 public class MemoryFragment extends android.support.v4.app.Fragment {
 
     protected Activity mActivity;
@@ -41,10 +40,10 @@ public class MemoryFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.memory_fragment_layout, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.memory_fragment_layout, container, false);
         textPlaceHolder = (TextView) view.findViewById(R.id.text_view_placeholder);
-        textPlaceHolder.setText("This is working");
-        Toast.makeText(getContext(),"MemoryFragment Created", Toast.LENGTH_SHORT).show();
+        textPlaceHolder.setText("This is The MemoriesFragment");
+        textPlaceHolder.setTextSize(25);
 
         return view;
     }
@@ -55,6 +54,7 @@ public class MemoryFragment extends android.support.v4.app.Fragment {
         
         MemoryFragment fragment = new MemoryFragment();
         fragment.setArguments(args);
+
         return fragment;
     }
 

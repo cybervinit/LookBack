@@ -3,26 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#fff000">
 
-    <android.support.v4.view.ViewPager android:layout_height="0px"
+    <android.support.v4.view.ViewPager android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/swipe_view_pager"
         xmlns:android="http://schemas.android.com/apk/res/android">
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/pager_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp" />
     </android.support.v4.view.ViewPager>
-
-    <Button
-        android:text="go to next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/check_go_next_btn"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 
