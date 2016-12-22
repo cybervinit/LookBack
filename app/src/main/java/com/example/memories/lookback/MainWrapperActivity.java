@@ -22,6 +22,7 @@ public class MainWrapperActivity extends FragmentActivity {
         mViewPager.setAdapter(mPagesAdapter);
 
 
+
     }
 
 

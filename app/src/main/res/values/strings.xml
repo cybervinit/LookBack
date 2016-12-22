@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LookBack</string>
+
+
+    <!-- Camera Fragment Strings-->
+    <string name="record_button_text">Record</string>
+
+
 </resources>
