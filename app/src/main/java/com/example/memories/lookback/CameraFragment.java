@@ -1,9 +1,7 @@
 package com.example.memories.lookback;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Camera;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -13,37 +11,27 @@ import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.MediaRecorder;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v13.app.FragmentCompat;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.jar.Manifest;
 
 /**
  * CameraFragment: This is the fragment that represents the camera screen in the list of
@@ -86,7 +74,7 @@ public class CameraFragment extends android.support.v4.app.Fragment {
         @Override
         public void onOpened(CameraDevice camera) {
             mCameraDevice = camera;
-            //startPreview();
+            startPreview();
         }
 
         @Override
@@ -230,11 +218,10 @@ public class CameraFragment extends android.support.v4.app.Fragment {
     }
 
     private void startPreview() {
-        SurfaceTexture surfaceTexture = mTextureView.getSurfaceTexture();
-        surfaceTexture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-        Surface previewSurface = new Surface(surfaceTexture);
-
         try {
+            SurfaceTexture surfaceTexture = mTextureView.getSurfaceTexture();
+            surfaceTexture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
+            Surface previewSurface = new Surface(surfaceTexture);
             mCaptureRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             mCaptureRequestBuilder.addTarget(previewSurface);
             mCameraDevice.createCaptureSession(Arrays.asList(previewSurface), new CameraCaptureSession.StateCallback() {
@@ -320,8 +307,8 @@ public class CameraFragment extends android.support.v4.app.Fragment {
 
         @Override
         public int compare(Size lhs, Size rhs) {
-            return Long.signum((long) lhs.getWidth() * lhs.getHeight() /
-                    (long) rhs.getWidth() * rhs.getHeight());
+            return Long.signum(((long) lhs.getWidth() * lhs.getHeight()) -
+                    ((long) rhs.getWidth() * rhs.getHeight()));
         }
     }
 }
